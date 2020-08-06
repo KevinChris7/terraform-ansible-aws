@@ -33,3 +33,22 @@ variable "PRIVATE_CIDR_B" {
 variable "VPC_DNS_HOST" {
   default = true
 }
+
+# AMIS for Instance Creation
+variable "AMIS" {
+  default = {
+    ap-south-1 = "ami-0447a12f28fddb066"
+    us-east-1  = "ami-01233435345454454"
+  }
+}
+
+# EC2 Instance Type
+variable "INSTANCE_TYPE" {
+  default = "t2.micro"
+}
+
+# EC2 Keypair
+variable "KEY_PAIR" {
+  default = "my_ec2_keypair" //Need to Replace the existing Key pair name
+}
+
