@@ -64,8 +64,8 @@ data "aws_subnet" "subnet_id_priv2_input" {
 ### Application Resources ###
 
 # ELB Security Group
-resource "aws_security_group" "sg_elb" {
-  name   = "sg_elb"
+resource "aws_security_group" "sg_alb" {
+  name   = "sg_alb"
   vpc_id = data.aws_vpc.vpc_input.id
   ingress {
     description = "HTTP from VPC"
@@ -93,7 +93,7 @@ resource "aws_security_group" "sg_elb" {
 resource "aws_lb" "alb" {
   name               = "appalb"
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.sg_elb.id]
+  security_groups    = [aws_security_group.sg_alb.id]
   subnets            = [data.aws_subnet.subnet_id_pub1_input.id, data.aws_subnet.subnet_id_pub2_input.id]
 }
 
@@ -124,7 +124,7 @@ resource "aws_security_group" "web_sec_gp" {
     description     = "Inbound for Public Subnet"
     from_port       = 80
     to_port         = 80
-    security_groups = [aws_security_group.sg_elb.id]
+    security_groups = [aws_security_group.sg_alb.id]
     protocol        = "tcp"
   }
   ingress {
@@ -152,7 +152,7 @@ resource "aws_instance" "webserver1" {
   security_groups             = [aws_security_group.web_sec_gp.id]
   subnet_id                   = data.aws_subnet.subnet_id_priv1_input.id
   tags = {
-    Name = "webserver"
+    Name = "webserverA"
   }
   user_data = file("apache.sh")
 }
@@ -167,7 +167,7 @@ resource "aws_instance" "webserver2" {
   security_groups             = [aws_security_group.web_sec_gp.id]
   subnet_id                   = data.aws_subnet.subnet_id_priv2_input.id
   tags = {
-    Name = "webserver"
+    Name = "webserverB"
   }
   user_data = file("apache.sh")
 }
