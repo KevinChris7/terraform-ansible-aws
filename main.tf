@@ -19,16 +19,16 @@ data "aws_availability_zones" "present_azs" {
 data "aws_vpc" "vpc_input" {
   cidr_block = var.VPC_CIDR
   tags = {
-    Name = "infrastructure"
+    Name = "primary"
   }
-  depends_on = [data.aws_vpc.vpc_input]
+  depends_on = [module.infrastructure.vpc]
 }
 
 # Public Subnet data
 data "aws_subnet" "subnet_id_pub_input" {
   vpc_id = data.aws_vpc.vpc_input.id
   tags = {
-    Name = "infrastructure"
+    Name = "PublicSubnet"
   }
 }
 
@@ -36,14 +36,14 @@ data "aws_subnet" "subnet_id_pub_input" {
 data "aws_subnet" "subnet_id_priv1_input" {
   vpc_id = data.aws_vpc.vpc_input.id
   tags = {
-    Name = "infrastructure"
+    Name = "PrivateSubnet1"
   }
 }
 
 data "aws_subnet" "subnet_id_priv2_input" {
   vpc_id = data.aws_vpc.vpc_input.id
   tags = {
-    Name = "infrastructure"
+    Name = "PrivateSubnet2"
   }
 }
 
