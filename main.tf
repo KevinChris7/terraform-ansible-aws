@@ -1,3 +1,7 @@
+# main.tf
+
+### Infrastructure Module ###
+
 module "infrastructure" {
   source = "./modules/infrastructure"
 
@@ -10,6 +14,8 @@ module "infrastructure" {
   PRIVATE_CIDR_B = var.PRIVATE_CIDR_B
   VPC_DNS_HOST   = var.VPC_DNS_HOST
 }
+
+### Infrastructure Data Sources ###
 
 # Data source - Availability Zones
 data "aws_availability_zones" "present_azs" {
@@ -88,7 +94,7 @@ resource "aws_lb" "alb" {
   name               = "appalb"
   load_balancer_type = "application"
   security_groups    = [aws_security_group.sg_elb.id]
-  subnets            = [data.aws_subnet.subnet_id_pub1_input.id,data.aws_subnet.subnet_id_pub2_input.id]
+  subnets            = [data.aws_subnet.subnet_id_pub1_input.id, data.aws_subnet.subnet_id_pub2_input.id]
 }
 
 # Application Load Balancer Target Group
@@ -138,28 +144,32 @@ resource "aws_security_group" "web_sec_gp" {
 
 # Instance Creation webserver1
 resource "aws_instance" "webserver1" {
-  ami               = lookup(var.AMIS, var.AWS_REGION)
-  availability_zone = data.aws_availability_zones.present_azs.names[0]
-  instance_type     = var.INSTANCE_TYPE
-  key_name          = var.KEY_PAIR
-  security_groups   = [aws_security_group.web_sec_gp.id]
-  subnet_id         = data.aws_subnet.subnet_id_priv1_input.id
+  ami                         = lookup(var.AMIS, var.AWS_REGION)
+  availability_zone           = data.aws_availability_zones.present_azs.names[0]
+  instance_type               = var.INSTANCE_TYPE
+  key_name                    = var.KEY_PAIR
+  associate_public_ip_address = true
+  security_groups             = [aws_security_group.web_sec_gp.id]
+  subnet_id                   = data.aws_subnet.subnet_id_priv1_input.id
   tags = {
     Name = "webserver"
   }
+  user_data = file("apache.sh")
 }
 
 # Instance Creation webserver2
 resource "aws_instance" "webserver2" {
-  ami               = lookup(var.AMIS, var.AWS_REGION)
-  availability_zone = data.aws_availability_zones.present_azs.names[1]
-  instance_type     = var.INSTANCE_TYPE
-  key_name          = var.KEY_PAIR
-  security_groups   = [aws_security_group.web_sec_gp.id]
-  subnet_id         = data.aws_subnet.subnet_id_priv2_input.id
+  ami                         = lookup(var.AMIS, var.AWS_REGION)
+  availability_zone           = data.aws_availability_zones.present_azs.names[1]
+  instance_type               = var.INSTANCE_TYPE
+  key_name                    = var.KEY_PAIR
+  associate_public_ip_address = true
+  security_groups             = [aws_security_group.web_sec_gp.id]
+  subnet_id                   = data.aws_subnet.subnet_id_priv2_input.id
   tags = {
     Name = "webserver"
   }
+  user_data = file("apache.sh")
 }
 
 # Application Load Balancer EC2 Attachment
