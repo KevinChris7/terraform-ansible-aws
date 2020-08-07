@@ -21,6 +21,10 @@ output "publicsubnet" {
   value = aws_subnet.public_subnet.id
 }
 
+output "publicsubnet2" {
+  value = aws_subnet.public_subnet2.id
+}
+
 output "privatesubnet1" {
   value = aws_subnet.private_subnetA.id
 }
@@ -28,3 +32,7 @@ output "privatesubnet1" {
 output "privatesubnet2" {
   value = aws_subnet.private_subnetB.id
 }
+
+# output "azs" {
+#     value = aws_availability_zones.present_azs 
+# }

@@ -9,8 +9,10 @@ variable "AWS_CRED" {}
 # Variable for VPC CIDR 
 variable "VPC_CIDR" {}
 
-# Variable for Public CIDR 
+# Variable for Public CIDRs
 variable "PUBLIC_CIDR" {}
+
+variable "PUBLIC_CIDR_B" {}
 
 # Variable for Private CIDRs
 variable "PRIVATE_CIDR_A" {}
@@ -19,6 +21,3 @@ variable "PRIVATE_CIDR_B" {}
 
 # Variable for DNS HOST
 variable "VPC_DNS_HOST" {}
-
-
-

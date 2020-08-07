@@ -29,7 +29,18 @@ resource "aws_subnet" "public_subnet" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "PublicSubnet"
+    Name = "PublicSubnet1"
+  }
+}
+
+resource "aws_subnet" "public_subnet2" {
+  vpc_id                  = aws_vpc.primary_vpc.id
+  cidr_block              = var.PUBLIC_CIDR_B
+  availability_zone       = data.aws_availability_zones.present_azs.names[1]
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "PublicSubnet2"
   }
 }
 
@@ -40,7 +51,7 @@ resource "aws_subnet" "private_subnetA" {
   availability_zone = data.aws_availability_zones.present_azs.names[0]
 
   tags = {
-    Name = "PrivateSubnets"
+    Name = "PrivateSubnet1"
   }
 }
 
@@ -50,7 +61,7 @@ resource "aws_subnet" "private_subnetB" {
   availability_zone = data.aws_availability_zones.present_azs.names[1]
 
   tags = {
-    Name = "PrivateSubnets"
+    Name = "PrivateSubnet2"
   }
 }
 
@@ -70,14 +81,19 @@ resource "aws_route_table" "private_rt" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    #gateway_id = aws_internet_gateway.igw.id  ==> Testing Purpose
+    #gateway_id = aws_internet_gateway.igw.id  //Testing Purpose
     nat_gateway_id = aws_nat_gateway.ngw.id
   }
 }
 
-# Public Route Table Association
-resource "aws_route_table_association" "public_rt_assoc" {
+# Public Route Table Associations
+resource "aws_route_table_association" "public_rt_assoc1" {
   subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public_rt.id
+}
+
+resource "aws_route_table_association" "public_rt_assoc2" {
+  subnet_id      = aws_subnet.public_subnet2.id
   route_table_id = aws_route_table.public_rt.id
 }
 
