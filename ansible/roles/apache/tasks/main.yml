@@ -1,0 +1,18 @@
+# main.yml
+
+---
+  - name: Install Apache2
+    yum: 
+      name: "{{ item }}"
+      state: latest
+    loop:
+      - httpd
+      - httpd-tools
+  - name: Start and Enable Apache2
+    systemd:
+      name: httpd
+      state: started
+      enabled: yes
+  - name: configure index.html
+    shell: |
+      echo "Hello World from $(hostname -f)" > /var/www/html/index.html
