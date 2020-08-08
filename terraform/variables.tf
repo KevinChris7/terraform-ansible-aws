@@ -1,5 +1,7 @@
 # variables.tf
 
+### Infrastructure and Application Variables ###
+
 # Variable for AWS REGION
 variable "AWS_REGION" {
   default = "ap-south-1"
