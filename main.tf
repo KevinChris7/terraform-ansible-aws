@@ -154,7 +154,6 @@ resource "aws_instance" "webserver1" {
   tags = {
     Name = "webserverA"
   }
-  user_data = file("apache.sh")
 }
 
 # Instance Creation webserver2
@@ -169,7 +168,6 @@ resource "aws_instance" "webserver2" {
   tags = {
     Name = "webserverB"
   }
-  user_data = file("apache.sh")
 }
 
 # Application Load Balancer EC2 Attachment

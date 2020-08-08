@@ -15,4 +15,4 @@
       enabled: yes
   - name: configure index.html
     shell: |
-      echo "Hello World from $(hostname -f)" > /var/www/html/index.html
+      echo "Hello World of Cloud from $(hostname -f)" > /var/www/html/index.html
