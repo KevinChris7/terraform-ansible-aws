@@ -65,7 +65,7 @@ data "aws_subnet" "subnet_id_priv2_input" {
 
 # ELB Security Group
 resource "aws_security_group" "sg_alb" {
-  name   = "sg_alb"
+  name   = var.ALB_SG
   vpc_id = data.aws_vpc.vpc_input.id
   ingress {
     description = "HTTP from VPC"
@@ -91,7 +91,7 @@ resource "aws_security_group" "sg_alb" {
 
 # Application Load Balancer
 resource "aws_lb" "alb" {
-  name               = "appalb"
+  name               = var.ALB_WEB
   load_balancer_type = "application"
   security_groups    = [aws_security_group.sg_alb.id]
   subnets            = [data.aws_subnet.subnet_id_pub1_input.id, data.aws_subnet.subnet_id_pub2_input.id]
@@ -99,7 +99,7 @@ resource "aws_lb" "alb" {
 
 # Application Load Balancer Target Group
 resource "aws_lb_target_group" "alb_tg" {
-  name     = "appalbtg"
+  name     = var.ALB_TG
   port     = "80"
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.vpc_input.id
@@ -118,7 +118,7 @@ resource "aws_lb_listener" "elb_listen_http" {
 
 # Webserver Security Group
 resource "aws_security_group" "web_sec_gp" {
-  name   = "websecgrp"
+  name   = var.WEB_SG
   vpc_id = data.aws_vpc.vpc_input.id
   ingress {
     description     = "Inbound for Public Subnet"

@@ -58,3 +58,22 @@ variable "KEY_PAIR" {
   default = "my_ec2_keypair" //Need to Replace the existing Key pair name
 }
 
+# ALB SG Name
+variable "ALB_SG" {
+  default = "sg_alb"
+}
+
+# ALB Name
+variable "ALB_WEB" {
+  default = "appalb"
+}
+
+# ALB TG
+variable "ALB_TG" {
+  default = "appalbtg"
+}
+
+# Web Server SG
+variable "WEB_SG" {
+  default = "websecgrp"
+}
