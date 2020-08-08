@@ -2,8 +2,10 @@
 
 ---
   - name: Configure the Webservers
-    hosts: webservers
-    become: yes
+    hosts: all
+    #become: yes
+    remote_user: ec2-user
+    connection: ssh
     gather_facts: no
     roles: 
       - python
