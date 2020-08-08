@@ -1,0 +1,6 @@
+name: profile
+title: InSpec Profile for testing Terraform Infrastructure
+maintainer: kevin
+copyright: kevin
+summary: InSpec Profile to test the terraform infrastructure configurations
+version: 0.1.0
