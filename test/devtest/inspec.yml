@@ -1,4 +1,4 @@
-name: profile
+name: devtest
 title: InSpec Profile for testing Terraform Infrastructure
 maintainer: kevin
 copyright: kevin
