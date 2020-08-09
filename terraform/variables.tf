@@ -9,7 +9,7 @@ variable "AWS_REGION" {
 
 # Variable for AWS Credentials
 variable "AWS_CRED" {
-  default = "/kevin/.aws/credentials"
+  default = "/vagrant/.aws/credentials" //Replace the path for your aws credentials
 }
 
 # Variable for VPC CIDR 
