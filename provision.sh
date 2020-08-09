@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This Script will install Ansible and Terraform
+# Also Check and Confirms the success of Installation
+# To Run => sudo ./provision.sh
+
 TERRAFORM_VERSION="0.12.26"
 
 install_ansible() {

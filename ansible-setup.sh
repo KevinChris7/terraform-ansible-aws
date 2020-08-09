@@ -5,7 +5,7 @@
 # Next Ansible Requirments are installed using Pip3
 # Next Exports Ansible Inventory and Config details
 # Checks the Dynamic Inventory is working or not
-# To Run => ./ansible-setup.sh
+# To Run => sudo ./ansible-setup.sh
 
 
 install_req() {

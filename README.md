@@ -1,5 +1,10 @@
 # **Vagrant-Terraform-Ansible-AWS-Project**
 
+## **About Vagrant**
+Vagrant provides easy to configure, reproducible, and portable virtual machines
+
+And it uses various technologies like VirtualBox,VMware and AWS as providers.
+
 ## **Vagrant Download and Setup**
 1.Download the Vagrant package for windows
 
@@ -26,6 +31,9 @@
 
 7.Customize the Virtual Box and VM resources
 
+## **About VirtualBox**
+VirtualBox is a powerful virtualization product which has high performance and open source.
+
 ## **VirtualBox Download and Setup**
 
 1.Download and Install the Oracle VirtualBox
@@ -39,6 +47,14 @@
 > vagrant up
 
 4.Open VirtualBox and DevBox should be up and running
+
+## **About Terraform**
+Terraform is a tool used to Build,Configure and Version up the Infrastructure efficiently.
+Terraform uses the configuration files to build and manage the Infrastructure
+
+## **About Ansible**
+
+Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.
 
 ## **Terraform and Ansible Installation in Dev Box[Ubuntu Image]**
 
@@ -89,6 +105,38 @@
 
 3.Execute the ansible playbook
 
-> ansible-playbook ansible/site.yml -i ansible/inventory/ec2.py --private-key="PEMFILEHERE"
+> ansible-playbook ansible/site.yml -i ansible/inventory/ec2.py --private-key="YOURPEMFILEHERE"
 
 4.Ansible will execute all the modules in the servers created by Terraform
+
+# **Automated Testing**
+
+# **Test Infrastructure**
+
+1.Get the Loadbalancer DNS
+
+2.Launch It
+
+3.Displays the "Hello World" with instance details
+
+4.Redirects traffic equally to webserver instances since Round Robin type
+
+5.When removing one web server,loadbalancer redirects all the traffic to the other
+
+# **Project Solution Summary**
+
+Like
+
+DisLike
+
+# **Tear Down Infrastructure**
+
+1.Tear down Terraform infrastructure
+
+> terraform destroy
+
+2.Check whether all the resources are cleaned up in cloud
+
+3.Tear Down the Vagrant to stop and continue after
+
+> vagrant suspend 
