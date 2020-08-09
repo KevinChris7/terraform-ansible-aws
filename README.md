@@ -95,7 +95,7 @@ Ansible is a radically simple IT automation engine that automates cloud provisio
 
 6.Approve the execution and resources will be created
 
-# **Configuration Management Using Ansible**
+## **Configuration Management Using Ansible**
 
 1.Navigate to root directory where ansible.cfg exists
 
@@ -109,9 +109,23 @@ Ansible is a radically simple IT automation engine that automates cloud provisio
 
 4.Ansible will execute all the modules in the servers created by Terraform
 
-# **Automated Testing**
+## **About Chef Inspec**
 
-# **Test Infrastructure**
+InSpec 2 introduces the ability to test cloud resources for compliance in addition to the system and application-level resources
+
+## **Automated Testing Using Inspec**
+
+1.Automated Testing can be done using Inspec
+
+2.For Installation,Execute the inspec-setup.sh script with chmod 700 permission
+
+3.For getting the infrastructure output from terraform,Execute tf-output.sh script with chmod 700 permission
+
+4.Once the outputs are copied to inspec file,run below command to start the testcase in controls directory
+
+> inspec exec test/devtest aws://
+
+## **Test Infrastructure**
 
 1.Get the Loadbalancer DNS
 
@@ -123,13 +137,17 @@ Ansible is a radically simple IT automation engine that automates cloud provisio
 
 5.When removing one web server,loadbalancer redirects all the traffic to the other
 
-# **Project Solution Summary**
+## **Project Solution Summary**
 
 Like
+Two Tier Web application architecture is implemented
+Complete VPC setup is done with Multiple AZs for Web Application
+Execution steps are automated using simple Shell Scripts
 
 DisLike
+Need to reduce the time taken for automation 
 
-# **Tear Down Infrastructure**
+## **Tear Down Infrastructure**
 
 1.Tear down Terraform infrastructure
 
