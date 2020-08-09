@@ -12,9 +12,31 @@ install_terraform() {
     # Terraform installation
     echo "Installing Terraform..."
     wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip 
+    sudo apt install unzip
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip 
     chmod +x terraform
     mv terraform /usr/local/bin 
+}
+
+check_installation() {
+    # Checking Terraform Version
+    terraform --version
+
+    if [[ "${?}" -eq 0 ]];
+    then
+        echo "Terraform Working"
+    else
+        echo "Terraform Not Working"
+    fi
+
+    # Checking Ansible --version
+    ansible --version
+    if [[ "${?}" -eq 0 ]];
+    then
+        echo "Ansible Working"
+    else 
+        echo "Ansible Not Working"
+    fi
 }
 sudo apt-get update 
 
@@ -35,3 +57,8 @@ else
     echo "Terraform Installation Failed"
     exit 1
 fi
+
+# Checks the Installation of Tools
+check_installation
+
+exit 0
