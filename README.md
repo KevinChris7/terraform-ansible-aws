@@ -53,3 +53,42 @@
 3.Check and confirm Ansible Installation
 
 >ansible --version
+
+
+## **Infrastructure Build Automation with Terraform**
+
+1.Navigate to terraform directory
+
+> cd terraform
+
+2.Format the terraform config files
+
+> terraform fmt
+
+3.Validate the terraform configurations
+
+> terraform validate
+
+4.Check the Plan of resources to be created by config files
+
+> terraform plan
+
+5.Apply the terraform config files
+
+> terraform apply
+
+6.Approve the execution and resources will be created
+
+# **Configuration Management Using Ansible**
+
+1.Navigate to root directory where ansible.cfg exists
+
+> cd..
+
+2.Execute the ansible-setup.sh script with chmod 700 permission
+
+3.Execute the ansible playbook
+
+> ansible-playbook ansible/site.yml -i ansible/inventory/ec2.py --private-key="PEMFILEHERE"
+
+4.Ansible will execute all the modules in the servers created by Terraform
