@@ -72,8 +72,10 @@ AWS Cloud
 
 - **Test Infrastructure**:
 
-    1.Get the Loadbalancer DNS of Application instance
+    1.After Ansible execution
 
-    2.Launch It
+    2.Get the Loadbalancer DNS of Application instance
 
-    3.Displays the "Hello World of Cloud" with other details
+    3.Launch It
+
+    4.Displays the "Hello World of Cloud" with other details

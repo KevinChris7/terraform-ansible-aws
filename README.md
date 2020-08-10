@@ -55,6 +55,8 @@ Terraform uses the configuration files to build and manage the Infrastructure
 ## **About Ansible**
 
 Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.
+Ansible is Agent less and uses YAML syntax
+Ansible requires to be installed only in controller machine
 
 ## **Terraform and Ansible Installation in Dev Box[Ubuntu Image]**
 
@@ -131,7 +133,7 @@ InSpec 2 introduces the ability to test cloud resources for compliance in additi
 
 2.Launch It
 
-3.Displays the "Hello World" with instance details
+3.Displays the "Hello World of Cloud" with other details
 
 4.Redirects traffic equally to webserver instances since Round Robin type
 
@@ -139,12 +141,14 @@ InSpec 2 introduces the ability to test cloud resources for compliance in additi
 
 ## **Project Solution Summary**
 
-Like
+**Like**
+
 Two Tier Web application architecture is implemented
 Complete VPC setup is done with Multiple AZs for Web Application
 Execution steps are automated using simple Shell Scripts
 
-DisLike
+**DisLike**
+
 Need to reduce the time taken for automation 
 
 ## **Tear Down Infrastructure**
