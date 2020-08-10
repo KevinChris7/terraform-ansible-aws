@@ -1,11 +1,13 @@
 # **Vagrant-Terraform-Ansible-AWS-Project**
 
 ## **About Vagrant**
+
 Vagrant provides easy to configure, reproducible, and portable virtual machines
 
 And it uses various technologies like VirtualBox,VMware and AWS as providers.
 
 ## **Vagrant Download and Setup**
+
 1.Download the Vagrant package for windows
 
 > https://www.vagrantup.com/downloads
@@ -32,6 +34,7 @@ And it uses various technologies like VirtualBox,VMware and AWS as providers.
 7.Customize the Virtual Box and VM resources
 
 ## **About VirtualBox**
+
 VirtualBox is a powerful virtualization product which has high performance and open source.
 
 ## **VirtualBox Download and Setup**
@@ -49,6 +52,7 @@ VirtualBox is a powerful virtualization product which has high performance and o
 4.Open VirtualBox and DevBox should be up and running
 
 ## **About Terraform**
+
 Terraform is a tool used to Build,Configure and Version up the Infrastructure efficiently.
 Terraform uses the configuration files to build and manage the Infrastructure
 
@@ -121,11 +125,21 @@ InSpec 2 introduces the ability to test cloud resources for compliance in additi
 
 2.For Installation,Execute the inspec-setup.sh script with chmod 700 permission
 
-3.For getting the infrastructure output from terraform,Execute tf-output.sh script with chmod 700 permission
+> sudo ./inspec-setup.sh
+
+3.Setup the AWS Profile and make sure credentials are available in .aws directory
+
+> inspec detect -t aws://
+
+4.For getting the infrastructure output from terraform,Execute tf-output.sh script with chmod 700 permission
+
+> sudo ./tf-output.sh
 
 4.Once the outputs are copied to inspec file,run below command to start the testcase in controls directory
 
 > inspec exec test/devtest aws://
+
+5.Testcase will be executed and results will be displayed
 
 ## **Test Infrastructure**
 
