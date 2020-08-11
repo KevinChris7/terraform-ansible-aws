@@ -133,8 +133,11 @@ InSpec 2 introduces the ability to test cloud resources for compliance in additi
 Export as Environment Variables
 
 > export AWS_ACCESS_KEY_ID="YOURAWSACCESSKEYHERE"
+
 > export AWS_SECRET_ACCESS_KEY="YOURAWSSECRETKEYHERE"
+
 > export AWS_REGION="REGIONHERE"
+
 > export AWS_AVAILABILITY_ZONE="AVAILABILITYZONEHERE"  
 
 Credentials in Config File
@@ -171,13 +174,15 @@ Credentials in Config File
 
 **Like**
 
-Two Tier Web application architecture is implemented
-Complete VPC setup is done with Multiple AZs for Web Application
-Execution steps are automated using simple Shell Scripts
+- Two Tier Web application architecture is implemented
+
+- Complete VPC setup is done with Multiple AZs for Web Application
+
+- Execution steps are automated using simple Shell Scripts
 
 **DisLike**
 
-Need to reduce the time taken for automation 
+- Need to reduce the time taken for automation 
 
 ## **Tear Down Infrastructure**
 
