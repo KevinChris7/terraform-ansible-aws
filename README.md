@@ -76,7 +76,6 @@ Ansible requires to be installed only in controller machine
 
 >ansible --version
 
-
 ## **Infrastructure Build Automation with Terraform**
 
 1.Navigate to terraform directory
@@ -109,6 +108,8 @@ Ansible requires to be installed only in controller machine
 
 2.Execute the ansible-setup.sh script with chmod 700 permission
 
+> sudo ./ansible-setup.sh
+
 3.Execute the ansible playbook
 
 > ansible-playbook ansible/site.yml -i ansible/inventory/ec2.py --private-key="YOURPEMFILEHERE"
@@ -127,19 +128,32 @@ InSpec 2 introduces the ability to test cloud resources for compliance in additi
 
 > sudo ./inspec-setup.sh
 
-3.Setup the AWS Profile and make sure credentials are available in .aws directory
+3.Setup the AWS Profile by Environment Variables or Configuration File
+
+Export as Environment Variables
+
+> export AWS_ACCESS_KEY_ID="YOURAWSACCESSKEYHERE"
+> export AWS_SECRET_ACCESS_KEY="YOURAWSSECRETKEYHERE"
+> export AWS_REGION="REGIONHERE"
+> export AWS_AVAILABILITY_ZONE="AVAILABILITYZONEHERE"  
+
+Credentials in Config File
+
+>~/.aws/config and ~/.aws/credentials file
+
+4.Make sure aws setup and credentials are set
 
 > inspec detect -t aws://
 
-4.For getting the infrastructure output from terraform,Execute tf-output.sh script with chmod 700 permission
+5.For getting the infrastructure output from terraform,Execute tf-output.sh script with chmod 700 permission
 
 > sudo ./tf-output.sh
 
-4.Once the outputs are copied to inspec file,run below command to start the testcase in controls directory
+6.Once the outputs are copied to inspec file,run below command to start the testcase in controls directory
 
 > inspec exec test/devtest aws://
 
-5.Testcase will be executed and results will be displayed
+7.Testcase will be executed and results will be displayed
 
 ## **Test Infrastructure**
 
