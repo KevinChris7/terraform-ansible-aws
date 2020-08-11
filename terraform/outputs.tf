@@ -8,6 +8,12 @@ output "alb_dns" {
   description = "Load Balancer DNS"
 }
 
+# Load Balancer ARN Output
+output "alb_arn" {
+  value       = aws_lb.alb.arn
+  description = "Load Balancer ARN"
+}
+
 # Webserver1 Instance 
 output "Web_Server1" {
   value       = aws_instance.webserver1.public_ip
