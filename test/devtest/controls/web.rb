@@ -1,7 +1,7 @@
 title 'Unit Testing AWS Infrastructure'
 
 # load data from terraform output
-content = inspec.profile.file("terraform.json")
+content = inspec.devtest.file("terraform.json")
 params = JSON.parse(content)
 
 VPC_ID = params['vpc_id']['value']
