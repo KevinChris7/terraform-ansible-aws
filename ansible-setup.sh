@@ -63,7 +63,4 @@ else
     exit 1
 fi
 
-#pem file permissions chmod400
-#ansible-playbook ansible/site.yml -vvv
-
 exit 0
