@@ -9,8 +9,11 @@ ALB_DNS = params['alb_dns']['value']
 
 # testcase for vpc
 describe aws_vpc(VPC_ID) do
-  its('cidr_block') { should cmp '10.0.0.0/16' }
+  it ('state') { should exist }
   its ('state') { should eq 'available' }
+  its('cidr_block') { should cmp '10.0.0.0/16' }
+  its ('instance_tenancy') { should eq 'default' }
+  its('tags') { should include(:Name => 'primary') }
 end
 
 # testcase for ec2 instances
